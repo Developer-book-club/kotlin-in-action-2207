@@ -204,7 +204,7 @@
 
 # # Kotlin 코드 컴파일
 
-<img src ="img/kotlin-compile-process.png" width="800">
+<img src ="[kotlin-compile-process.png](https://github.com/Developer-book-club/kotlin-in-action-2207/blob/jaesung/img/kotlin-compile-process.png)" width="800">
 
 - Kotlin은 Java와 동일하게 JVM위에 동작하기 때문에 컴파일 과정이 유사
 
