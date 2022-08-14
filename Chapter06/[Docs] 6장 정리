@@ -605,3 +605,60 @@ fun main(args: Array<String>) {
 - 자바 클래스를 코틀린에서 확장하거나 자바 인터페이스를 코틀린에서 구현하는 경우 메서드 파라미터의 널 가능성과 변경 가능성에 대해 깊이 생각해야 한다.
 - 코틀린의 `Array` 클래스는 일반 제네릭 클래스처럼 보인다. 하지만 `Array`는 자바 배열로 컴파일된다.
 - 원시 타입의 배열은 `IntArray`와 같이 각 타입에 대한 특별한 배열로 표현된다.
+
+
+# 5. 자바 플랫폼 타입 예제
+
+```
+import com.sun.istack.NotNull;
+import org.springframework.lang.NonNull;
+
+public class Book {
+
+    private String name;
+    private String author;
+
+    public Book() {}
+
+    public Book(String name) {
+        this.name = name;
+    }
+
+    public String getOriginalName() {
+        return this.name;
+    }
+
+    public @NonNull String getName() {
+        return "book::" + this.name;
+    }
+
+    public @NotNull String getAuthor() {
+        return this.author;
+    }
+}
+
+```
+
+```
+class DevelopBook : Book() {
+
+    // 어노테이션이 없는
+    // 플랫폼 타입
+    override fun getOriginalName(): String {
+        return super.getOriginalName()
+    }
+
+    // jsr-305
+    // kotlin nullability 전환
+    override fun getName(): String {
+        return super.getName()
+    }
+
+    // 표준이 아닌 어노테이션
+    // 플랫폼 타입
+    override fun getAuthor(): String {
+        return super.getAuthor()
+    }
+```
+
+
